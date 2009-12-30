@@ -1,6 +1,6 @@
 = Sinatra
 
-SinatraはRubyで下記のような最小労力で手早くウェブアプリケーションを作成するためのDSLです。
+SinatraはRubyで下記のように最小の労力で手早くウェブアプリケーションを作成するためのDSLです。
 
   # myapp.rb
   require 'rubygems'
@@ -9,12 +9,12 @@ SinatraはRubyで下記のような最小労力で手早くウェブアプリケ
     'Hello world!'
   end
 
-gemをインストールして動かしてみる。
+gemをインストールして、動かしてみましょう。
 
   sudo gem install sinatra
   ruby myapp.rb
 
-http://localhost:4567 を見る。
+そして、 http://localhost:4567 を見てください。
 
 == ルート
 
@@ -37,7 +37,7 @@ Sinatraでは、ルートはHTTPメソッドとURLマッチングパターンが
     .. 何か削除する ..
   end
 
-ルートは定義された順番にマッチします。 リクエストに最初にマッチしたルートが呼び出されます。
+ルートは定義順にマッチします。 リクエストに最初にマッチしたルートが呼び出されます。
 
 ルートのパターンは名前付きパラメータを含むことができ、
 <tt>params</tt>ハッシュで取得できます。
@@ -101,8 +101,8 @@ Sinatraでは、ルートはHTTPメソッドとURLマッチングパターンが
 
 == ビュー / テンプレート
 
-テンプレートは<tt>./views</tt>ディレクトリ下に配置されています。
-他のディレクトリを使用する場合の例:
+テンプレートは<tt>./views</tt>ディレクトリ下に配置します。
+他のディレクトリを使用する場合、以下のように指定します:
 
   set :views, File.dirname(__FILE__) + '/templates'
 
@@ -197,7 +197,7 @@ see {Options and Configurations}[http://www.sinatrarb.com/configuration.html],
 
 === テンプレート内で変数にアクセスする
 
-テンプレートはルートハンドラと同じコンテキストの中で評価されます。. ルートハンドラでセットされたインスタンス変数は
+テンプレートはルートハンドラと同じコンテキストの中で評価されます。ルートハンドラでセットされたインスタンス変数は
 テンプレート内で直接使うことができます。
 
   get '/:id' do
@@ -212,11 +212,11 @@ see {Options and Configurations}[http://www.sinatrarb.com/configuration.html],
     haml '%h1= foo.name', :locals => { :foo => foo }
   end
 
-このやり方は他のテンプレート内で部分テンプレートとして表示する時に典型的に使用されます。
+このやり方は他のテンプレート内で部分テンプレートとして表示する時によく使用されます。
 
 === ファイル内テンプレート
 
-テンプレートはソースファイルの最後で定義することもできます。
+テンプレートはソースファイルの末尾で定義することもできます。
 
   require 'rubygems'
   require 'sinatra'
@@ -254,7 +254,7 @@ see {Options and Configurations}[http://www.sinatrarb.com/configuration.html],
   end
 
 「layout」というテンプレートが存在する場合、そのテンプレートファイルは他のテンプレートが
-表示される度に使用されます。<tt>:layout => false</tt>.することでlayoutsを無効にできます。
+表示される度に使用されます。<tt>:layout => false</tt>することでレイアウトを無効にできます。
 
   get '/' do
     haml :index, :layout => !request.xhr?
@@ -370,7 +370,7 @@ block or before filter. 例外オブジェクトはRack変数<tt>sinatra.error</
     'エラーメッセージ...' + request.env['sinatra.error'].message
   end
 
-と書いておいて,下記のように呼び出します。
+と書いておいて、下記のように呼び出します。
 
   get '/' do
     raise MyCustomError, '何かがまずかったようです'
@@ -380,13 +380,13 @@ block or before filter. 例外オブジェクトはRack変数<tt>sinatra.error</
 
   エラーメッセージ... 何かがまずかったようです
 
-開発環境として実行している場合、Sinatraは特別な<tt>not_found</tt>と<tt>error</tt>ハンドラーを
-インストールしています。
+Development環境として実行している場合、Sinatraは特別な<tt>not_found</tt>と<tt>error</tt>ハンドラーを
+組み込んでいます。
 
 == MIMEタイプ
 
-<tt>send_file</tt>か静的ファイルを使う時、Sinatraが理解でいないMIMEタイプがある場合があります。
-その時は +mime_type+ を使ってファイル拡張子毎に登録して下さい。
+<tt>send_file</tt>か静的ファイルを使う時、Sinatraが知らないMIMEタイプがある場合があります。
+そのときは +mime_type+ を使ってファイル拡張子ごとに登録して下さい。
 
   mime_type :foo, 'text/foo'
 
@@ -450,7 +450,7 @@ SinatraでのテストはRack-basedのテストライブラリかフレームワ
     end
   end
 
-注意: ビルトインのSinatra::TestモジュールとSinatra::TestHarnessクラスは
+注意: 組み込みのSinatra::TestモジュールとSinatra::TestHarnessクラスは
 0.9.2リリース以降、廃止予定になっています。
 
 == Sinatra::Base - ミドルウェア、ライブラリ、 モジュラーアプリ
@@ -458,7 +458,7 @@ SinatraでのテストはRack-basedのテストライブラリかフレームワ
 トップレベル(グローバル領域)上でいろいろ定義していくのは軽量アプリならうまくいきますが、
 RackミドルウェアやRails metal、サーバのコンポーネントを含んだシンプルな
 ライブラリやSinatraの拡張プログラムを考慮するような場合はそうとは限りません。
-トップレベルのDSLがネームスペースを汚染したり、設定を変えてしまうこと(例:./publicや./view)がありえます。
+トップレベルのDSLが名前空間を汚染したり、設定を変えてしまうこと(例:./publicや./view)がありえます。
 そこでSinatra::Baseの出番です。
 
   require 'sinatra/base'
